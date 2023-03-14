@@ -14,7 +14,7 @@
   <tbody>
     @foreach($images as $image)
     <tr>
-      <th scope="row">{{$loop->iteration}}</th>
+      <th scope="row">{{$images->firstItem() + $loop->index}}</th>
       <td>{{ $image->text }}</td>
       <td><img src="{{asset('storage/images/'.$image->image)}}" width="100px"></td>
       <td>{{ $image->type }}</td>
@@ -27,6 +27,7 @@
     @endforeach
   </tbody>
 </table>
+<div>{{$images->links()}}</div>
 <div width="30px">
 <a href="{{route('image')}}" class="btn btn-primary">Add</a>
 </div>

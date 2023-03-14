@@ -46,3 +46,5 @@ Route::get('imgshow',[FrontendController::class,'imgshow'])->name('imgshow');
 Route::get('imgdelete/{id}',[FrontendController::class,'imgdelete'])->name('imgdelete');
 Route::get('imgupdate/{id}',[FrontendController::class,'imgupdate'])->name('imgupdate');
 Route::post('imgedit',[FrontendController::class,'imgedit'])->name('imgedit');
+Route::get('exportexl',[FrontendController::class,'exportexl'])->name('exportexl');
+Route::get('exportpdf',[FrontendController::class,'exportpdf'])->name('exportpdf');

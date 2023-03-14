@@ -6,22 +6,24 @@
   <div class="form-group">
     <label >Text</label>
     <input type="text" name="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter text">
-
+    @error('text')<p class="alert-danger">{{$message}}</p>@enderror
   <div class="form-group">
     <label >Image</label>
     <input type="file" name="image" class="form-control"  >
+    @error('image')<p class="alert-danger">{{$message}}</p>@enderror
   </div>
   <div class="input_field_bknw mr-18">
        <div class="form-group">
                
                             <select name="type" class="form-control minimal" >
-                                                <option class="hidden"  selected > Type</option>
+                                                <option class="hidden"   > Type</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
                                                 <option value="5">5</option>
                                             </select>
+                                             
               </div>
               </div>
 

@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserCreatedMail;
 use Illuminate\Http\Request;
 Use App\Models\Contacts;
 use App\Models\image;
 use Illuminate\Support\Facades\File;
+//use Rap2hpoutre\FastExcel\Facades\FastExcel;
+use Rap2hpoutre\FastExcel\FastExcel;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class FrontendController extends Controller
 {
@@ -72,6 +77,7 @@ class FrontendController extends Controller
             'comments'=>$comments,
 
         ]);
+        Mail::to('yadhu@gmail.com')->send(new UserCreatedMail($name));
         return redirect()->route('contact1');
     }
     public function login(){
@@ -94,6 +100,11 @@ class FrontendController extends Controller
         return redirect()->route('display')->with('message','Deleted 1 Row...');
     }
     public function imgupload(){
+        request()->validate([
+            'text'=>'required',
+            'type'=>'required',
+            'image'=>'required',
+        ]);
 
         $input=[
             'text' => request('text'),
@@ -119,7 +130,7 @@ class FrontendController extends Controller
 
     }
     public function imgshow(){
-        $images=image::all();
+        $images=image::paginate(5);
         
         //return $images;
         return view('frontend.imgshow',compact('images'));
@@ -139,12 +150,18 @@ class FrontendController extends Controller
     public function imgedit(){
         
         $image=image::find(decrypt(request('id')));
+
         $input=[
             'text' => request('text'),
             'image'=> request('image'),
             'type'=> request('type'),
 
         ];
+        request()->validate([
+            'text'=>'required',
+            'type'=>'required',
+            'image'=>'required',
+        ]);
 
         if (request()->hasFile('image'))
         {        
@@ -171,5 +188,14 @@ class FrontendController extends Controller
         }
         $image->update($input);
         return redirect()->route('imgshow');
+    }
+    public function exportexl(){
+        $contacts=Contacts::all();
+        return (new FastExcel($contacts))->download('contacts.xlsx');
+    }
+    public function exportpdf(){
+        $contacts=Contacts::all();
+        $pdf = Pdf::loadView('frontend.invoice', ['contacts'=>$contacts]);
+        return $pdf->download('contacts.pdf');
     }
 }

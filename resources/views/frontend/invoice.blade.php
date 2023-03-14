@@ -1,13 +1,4 @@
-@extends('frontend.adminlayout')
-@section('admin-container')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<h5>Contacts Details</h5>
-
-
-@if(session()->has('message'))
-    <P>{{session()->get('message')}}</p>
-@endif
-<table class="table">
+<table class="table" style="width:100%" border=1>
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -35,17 +26,7 @@
       <td>{{ $contact->zip }}</td>
       <td>{{ $contact->booking }}</td>
       <td>{{ $contact->comments }}</td>
-      <td>
-        <a href="" class="btn btn-primary">Edit</a>
-        <a href="{{ route('delete', encrypt($contact->id)) }}" class="fa fa-trash" style='font-size:30px'></a>
-      </td>
     </tr>
     @endforeach
   </tbody>
 </table>
-<div>
-  <a href="{{route('exportexl')}}" class="btn btn-success">Export</a>
-  <a href="{{route('exportpdf')}}" class="btn btn-danger">PDF</a>
-</div>
-
-@endsection

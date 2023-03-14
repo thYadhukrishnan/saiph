@@ -7,7 +7,7 @@
   <div class="form-group">
     <label >Text</label>
     <input type="text" name="text" value="{{$image->text}}" class="form-control"  aria-describedby="emailHelp" placeholder="Enter text">
-
+    @error('text')<p class="alert-danger">{{$message}}</p>@enderror
   <div class="form-group">
     <label >Image</label>
     <input type="file" value="{{$image->image}}"name="image" class="form-control"  >
