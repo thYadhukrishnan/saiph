@@ -196,6 +196,6 @@ class FrontendController extends Controller
     public function exportpdf(){
         $contacts=Contacts::all();
         $pdf = Pdf::loadView('frontend.invoice', ['contacts'=>$contacts]);
-        return $pdf->download('contacts.pdf');
+        return $pdf->stream('contacts.pdf');
     }
 }

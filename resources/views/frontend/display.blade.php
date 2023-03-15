@@ -36,8 +36,8 @@
       <td>{{ $contact->booking }}</td>
       <td>{{ $contact->comments }}</td>
       <td>
-        <a href="" class="btn btn-primary">Edit</a>
-        <a href="{{ route('delete', encrypt($contact->id)) }}" class="fa fa-trash" style='font-size:30px'></a>
+        <a href="" class="fa fa-edit" style='font-size:20px'></a>
+        <a href="{{ route('delete', encrypt($contact->id)) }}" class="fa fa-trash" style='font-size:20px' onclick="return deletebtn();"></a>
       </td>
     </tr>
     @endforeach
@@ -48,4 +48,10 @@
   <a href="{{route('exportpdf')}}" class="btn btn-danger">PDF</a>
 </div>
 
+<script>
+function deletebtn(){
+  if(!confirm("Are you sure to delete this"))
+  event.preventDefault();
+}
+</script>
 @endsection
