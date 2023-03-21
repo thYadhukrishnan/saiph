@@ -40,9 +40,9 @@ class FrontendController extends Controller
     public function terms(){
         return view('frontend.terms');
     }
-    public function admin(){
+    /*public function admin(){
         return view('frontend.admin');
-    }
+    }*/
     public function welcome(){
         return view('frontend.adminwelcome');
     }
@@ -80,7 +80,7 @@ class FrontendController extends Controller
         Mail::to('yadhu@gmail.com')->send(new UserCreatedMail($name));
         return redirect()->route('contact1');
     }
-    public function login(){
+   /* public function login(){
         $input=['email'=>request('email'),'password'=>request('password')];
         
         if (auth()->attempt($input,true)){
@@ -89,11 +89,11 @@ class FrontendController extends Controller
         else{
             return redirect()->route('admin')->with('message','Invalid User');
         }
-    }
-    public function logout(){
+    }*/
+    /*public function logout(){
         auth()->logout();
         return view('frontend.admin');
-    }
+    }*/
     public function delete($id){
         $contact=Contacts::find(decrypt($id));
         $contact->delete();

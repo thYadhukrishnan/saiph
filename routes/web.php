@@ -9,8 +9,7 @@ use App\Http\Controllers\Frontend\hotelController;
 use App\Http\Controllers\Frontend\servicesController;
 use App\Http\Controllers\Frontend\termsController;
 use App\Http\Controllers\FrontendController;
-
-
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +33,12 @@ Route::get('hotel',[FrontendController::class,'hotel'])->name('hotel');
 Route::get('contact',[FrontendController::class,'contact'])->name('contact1');
 Route::get('faq',[FrontendController::class,'faq'])->name('faq');
 Route::get('terms',[FrontendController::class,'terms'])->name('terms');
-Route::get('admin',[FrontendController::class,'admin'])->name('admin');
-Route::post('login',[FrontendController::class,'login'])->name('login');
+
+Route::get('admin',[LoginController::class,'admin'])->name('admin');
+Route::post('login',[LoginController::class,'login'])->name('login');
+
 Route::get('display',[FrontendController::class,'display'])->name('display');
-Route::get('logout',[FrontendController::class,'logout'])->name('logout');
+Route::get('logout',[LoginController::class,'logout'])->name('logout');
 Route::get('delete/{id}',[FrontendController::class,'delete'])->name('delete');
 Route::get('welcome',[FrontendController::class,'welcome'])->name('welcome');
 Route::get('image',[FrontendController::class,'image'])->name('image');
