@@ -37,15 +37,19 @@ Route::get('terms',[FrontendController::class,'terms'])->name('terms');
 Route::get('admin',[LoginController::class,'admin'])->name('admin');
 Route::post('login',[LoginController::class,'login'])->name('login');
 
-Route::get('display',[FrontendController::class,'display'])->name('display');
-Route::get('logout',[LoginController::class,'logout'])->name('logout');
-Route::get('delete/{id}',[FrontendController::class,'delete'])->name('delete');
-Route::get('welcome',[FrontendController::class,'welcome'])->name('welcome');
-Route::get('image',[FrontendController::class,'image'])->name('image');
-Route::post('imgupload',[FrontendController::class,'imgupload'])->name('imgupload');
-Route::get('imgshow',[FrontendController::class,'imgshow'])->name('imgshow');
-Route::get('imgdelete/{id}',[FrontendController::class,'imgdelete'])->name('imgdelete');
-Route::get('imgupdate/{id}',[FrontendController::class,'imgupdate'])->name('imgupdate');
-Route::post('imgedit',[FrontendController::class,'imgedit'])->name('imgedit');
-Route::get('exportexl',[FrontendController::class,'exportexl'])->name('exportexl');
-Route::get('exportpdf',[FrontendController::class,'exportpdf'])->name('exportpdf');
+Route::group(['middleware'=>'admin_auth'],function(){
+
+    Route::get('display',[FrontendController::class,'display'])->name('display');
+    Route::get('logout',[LoginController::class,'logout'])->name('logout');
+    Route::get('delete/{id}',[FrontendController::class,'delete'])->name('delete');
+    Route::get('welcome',[FrontendController::class,'welcome'])->name('welcome');
+    Route::get('image',[FrontendController::class,'image'])->name('image');
+    Route::post('imgupload',[FrontendController::class,'imgupload'])->name('imgupload');
+    Route::get('imgshow',[FrontendController::class,'imgshow'])->name('imgshow');
+    Route::get('imgdelete/{id}',[FrontendController::class,'imgdelete'])->name('imgdelete');
+    Route::get('imgupdate/{id}',[FrontendController::class,'imgupdate'])->name('imgupdate');
+    Route::post('imgedit',[FrontendController::class,'imgedit'])->name('imgedit');
+    Route::get('exportexl',[FrontendController::class,'exportexl'])->name('exportexl');
+    Route::get('exportpdf',[FrontendController::class,'exportpdf'])->name('exportpdf');
+
+});

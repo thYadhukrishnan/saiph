@@ -44,7 +44,14 @@ class FrontendController extends Controller
         return view('frontend.admin');
     }*/
     public function welcome(){
-        return view('frontend.adminwelcome');
+        //if(auth()->check()){
+            $images=image::where('type','=',1)->get();
+            return view('frontend.adminwelcome',compact('images'));
+       // }
+       // else{
+       //     return redirect()->route('admin');
+       // }
+        
     }
     public function image(){
         

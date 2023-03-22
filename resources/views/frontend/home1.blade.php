@@ -24,8 +24,10 @@
             <form>
               <button class="btn book_audit_bnr" type="book">Book Audit<img src="{{asset('frontend/img/arrow_btn.png')}}" class="arrow_btn"></button>
             </form>
-            @foreach($images as $image)
           </div>
+          <!--iterating the banner images-->
+            @foreach($images as $image)
+          
           <div class="carousel-item"> <img class="d-block w-100" src="{{asset('storage/images/'.$image->image)}}" alt="First slide">
             <div class="carousel-caption_saiph  d-none d-md-block">
               <p>We are here to provide<br>
@@ -36,6 +38,9 @@
             </form>
           </div>
           @endforeach
+
+          <!--end of iterarion-->
+          
         <!--  <div class="carousel-item"> <img class="d-block w-100" src="{{url('frontend/img/banner_2.jpg')}}" alt="Second slide">
             <div class="carousel-caption_saiph  d-none d-md-block">
               <p>Relax in the knowledge <br>

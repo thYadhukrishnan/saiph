@@ -3,20 +3,21 @@
 <h6> {{ session()->get('message') }} </h6>
 
 @endif
+
 <div class="container" >
   <h3>Sign In</h3>
-<form action="{{route('login')}}" method="post">
+<form action="{{route('login')}}" method="post" class="form-signin">
     @csrf
   <!-- Email input -->
   <div class="form-outline mb-4">
     <input type="email" name="email" class="form-control" />
-    <label class="form-label" for="form2Example1">Email address</label>
+    <label  for="form2Example1" class="sr-only">Email address</label>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
     <input type="password" name="password" class="form-control" />
-    <label class="form-label" for="form2Example2">Password</label>
+    <label class="sr-only" for="form2Example2">Password</label>
   </div>
 
   <!-- 2 column grid layout for inline styling -->
@@ -60,3 +61,4 @@
   </div>
 </form>
 </div>
+
